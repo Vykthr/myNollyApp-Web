@@ -1,0 +1,35 @@
+@media (min-width: 576px){
+    .col-sm-5 {
+        flex: 0 0 95%;
+        max-width: 95%;
+    }
+}
+
+@media only screen and (min-width: 990px){ 
+.col-sm-5 {
+    flex: 0 0 80%;
+    max-width: 80%;
+}
+}
+@media only screen and (min-width: 1200px){ 
+.col-sm-5 {
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+}
+}
+.error {
+    color: #e53637 !important;
+}
+.form-control {
+    font-weight: normal;
+    color: #000;
+    height: 45px;
+}
+label{
+    display: block;
+    text-align: left;
+    color: #fff;
+}
+.check {
+    display: flex;
+}

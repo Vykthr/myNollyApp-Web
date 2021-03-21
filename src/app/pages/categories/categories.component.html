@@ -1,0 +1,85 @@
+<div *ngIf="this.general.movieList.value.length < 10" id='loader' class="preloader"></div>
+
+<div class="main-wrapper">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="text-center">
+                        <form [formGroup]='searchForm'>
+                            <div class="form-group mt-2 row">
+                                <input formControlName='title' class="form-control text" type="text" placeholder="Movie Title" style="width: 300px;"/>
+                                <select formControlName='genre' class="form-control" placeholder="Select">
+                                    <option defaultSelected value="all">All Genres</option>
+                                    <option *ngFor="let genre of general.genres" value="{{genre}}">{{genre | titlecase}}</option>
+                                </select>
+                                <select formControlName='from' class="form-control" placeholder="Select">
+                                    <option defaultSelected value="all">All Links</option>
+                                    <option *ngFor="let from of general.froms" value="{{from}}">{{from | titlecase}}</option>
+                                </select>
+                                <select formControlName='language' class="form-control" placeholder="Select">
+                                    <option defaultSelected value="all">All Languages</option>
+                                    <option *ngFor="let language of general.languages" value="{{language}}">{{language | titlecase}}</option>
+                                </select>
+                                <select formControlName='type' class="form-control" placeholder="Select">
+                                    <option defaultSelected value="all">All Movie Types</option>
+                                    <option *ngFor="let type of general.types" value="{{type}}">{{type | titlecase}}</option>
+                                </select>
+                                <select formControlName='year' class="form-control" placeholder="Select">
+                                    <option defaultSelected value="all">All Years</option>
+                                    <option *ngFor="let year of general.years; let index = index" value="{{date - index}}">{{date - index}}</option>
+                                </select>
+
+                                <button class="btn" type="submit" (click)="search()">
+                                    <i class="fa fa-search"></i>
+                                    Search
+                                </button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <h2 class="info">Search Results</h2>
+    <p *ngIf="searchRes.length < 1" class="infoText">No results found</p>
+    <div class="slide-wrapper search-wrap-slide mt-4">
+        <div class="container">
+            <div class="row" id="category">
+                <div class="col-md-4 col-lg-3 mb-3" *ngFor="let movie of searchRes">
+                    <a class="slide-one" (click)="viewMovie(movie)">
+                        <div class="slide-image"><img src="{{movie.details.img}}" alt="image"></div>
+                        <div class="slide-content">
+                            <h2>{{movie.details.title | titlecase}}</h2>
+                            <p class="tag"id="rating" [innerHTML]="getRating(general.getRate(movie.details.votes, movie.details.views))"> 
+                            </p>
+                            <span class="tag">{{movie.details.year}}</span>
+                            <span class="tag"><b>HD</b></span>
+                            <span class="tag">{{movie.details.from | titlecase}}</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language -->
+    <div class="category-wrapper slide-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 text-left mb-4 mt-1">
+                    <h2>Watch in Your Language</h2>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <app-min-slider [language]="true"></app-min-slider>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- slider wrapper -->
+
+</div>

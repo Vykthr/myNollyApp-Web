@@ -1,0 +1,14 @@
+.sidenav {
+    background: #000 !important;
+    width: 50%;
+}
+.sidenav li a {
+    color: #fff;
+}
+.sidenav ul {
+    margin: 15px 20px;
+}
+.sidenav ul li {
+    margin: 0;
+    padding: 10px;
+}

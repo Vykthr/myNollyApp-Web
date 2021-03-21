@@ -1,0 +1,66 @@
+<div class="footer-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h4 class="down" class="mb-4">DOWNLOAD THE APP TODAY.</h4>
+            </div>
+            <div class="col-lg-12 text-center">
+                <a target="_blank" href="https://play.google.com/store/apps/details?id=com.mynollyapp.app">
+                    <img src="assets/images/play-store.png" alt="icon" class="icon-img">
+                </a>
+                <img src="assets/images/apple-store.png" alt="icon" class="icon-img">
+            </div>
+            <div class="col-sm-12">
+                <div class="middle-footer" style="padding: 40px;">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-3 col-sm-6 col-xs-6 md-mb25">
+                            <h5>About</h5>
+                            <ul>
+                                <li><a routerLink="/">Home</a></li>
+                                <li><a routerLink="/categories">Categories</a></li>
+                                <li><a routerLink="/account">Account</a></li>
+                                <li *ngIf="!auth.authenticated.value"><a routerLink="/signup">Sign Up</a></li>
+                                <li *ngIf="!auth.authenticated.value"><a routerLink="/signin">Sign In</a></li>
+                                <li *ngIf="auth.authenticated.value"><a (click)="general.signOut()">Sign Out</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-lg-3 col-sm-6 col-xs-6 md-mb25">
+                            <h5>Categories</h5>
+                            <ul>
+                                <li><a routerLink="/categories/recent">Recent</a></li>
+                                <li><a routerLink="/categories/drama">Drama</a></li>
+                                <li><a routerLink="/categories/romance">Romance</a></li>
+                                <li><a routerLink="/categories/comedy">Comedy</a></li>
+                                <li><a routerLink="/categories/action">Action</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-lg-3 col-sm-6 col-xs-6 md-mb25">
+                            <h5>Language</h5>
+                            <ul>
+                                <li><a routerLink="/categories/languages/english">English</a></li>
+                                <li><a routerLink="/categories/languages/yoruba">Yoruba</a></li>
+                                <li><a routerLink="/categories/languages/igbo">Igbo</a></li>
+                                <li><a routerLink="/categories/languages/hausa">Hausa</a></li>
+                                <li><a routerLink="/categories/languages/others">Others</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-lg-3 col-sm-6 col-xs-6">
+                            <h5>Social Link</h5>
+                            <ul>
+                                <li><a href="https://facebook.com/nollyapp">Facebook</a></li>
+                                <li><a href="https://twitter.com/nollyapp">Twitter</a></li>
+                                <li><a href="https://instagram.com/nollyapp">Instagram</a></li>
+                                <li><a href="tel:+23408137861173">Phone</a></li>
+                                <li><a href="mailto:info@mynollyapp.com">Email</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 text-right" style="margin-top: 2rem;">
+                <p class="copyright-text">© {{date}} copyright. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="main-wrapper">
+    <section class="form-wrapper">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-sm-5">
+                  <div class="form-div text-center">
+                      <h2>Sign Up</h2>
+                      <p>User Registration</p>
+                      <form [formGroup]="signupForm">
+                          <div class="form-group mt-5">
+                            <label>Surname</label>
+                            <input [class.invalid]="!signupForm.controls['surname'].valid && signupForm.controls['surname'].touched" class="form-control" formControlName="surname" type="text" placeholder="Enter Surname">
+                            <small class="error-message" *ngIf="!signupForm.controls['surname'].valid  && signupForm.controls['surname'].touched">
+                                Enter a valid Surname
+                            </small>
+
+                            <label>First Name</label>
+                            <input [class.invalid]="!signupForm.controls['firstName'].valid && signupForm.controls['firstName'].touched" class="form-control" formControlName="firstName" type="text" placeholder="Enter First Name">
+                            <small class="error-message" *ngIf="!signupForm.controls['firstName'].valid  && signupForm.controls['firstName'].touched">
+                                Enter a valid First name
+                            </small>
+
+                            <label>Email</label>
+                            <input [class.invalid]="!signupForm.controls['email'].valid && signupForm.controls['email'].touched" class="form-control" formControlName="email" type="email" placeholder="Enter Email Address">
+                            <small class="error-message" *ngIf="!signupForm.controls['email'].valid  && signupForm.controls['email'].touched">
+                                Enter a valid Email
+                            </small>
+
+                            <label>Phone Number</label>
+                            <input [class.invalid]="!signupForm.controls['phone'].valid && signupForm.controls['phone'].touched" class="form-control" formControlName="phone" type="number" placeholder="Enter Phone Number">
+                            <small class="error-message" *ngIf="!signupForm.controls['phone'].valid  && signupForm.controls['phone'].touched">
+                                Enter a valid phone number
+                            </small>
+
+                            <label>Date of Birth (Must be 18 or older)</label>
+                            <select class="form-control" formControlName="day" [class.invalid]="!signupForm.controls['day'].valid && signupForm.controls['day'].touched">
+                                <option value=''>Day</option>
+                                <option *ngFor="let day of days; let index=index" value="{{ index+1 | number : '2.0'}}">{{index+1}}</option>
+                            </select>
+                            <select class="form-control" formControlName="month" [class.invalid]="!signupForm.controls['month'].valid && signupForm.controls['month'].touched">
+                                <option value=''>Month</option>
+                                <option *ngFor="let month of months; let index=index" value="{{ index+1 | number : '2.0'}}">{{month}}</option>
+                            </select>
+                            <select class="form-control" formControlName="year" [class.invalid]="!signupForm.controls['year'].valid && signupForm.controls['year'].touched">
+                                <option value=''>Year</option>
+                                <option *ngFor="let year of years; let index=index" value="{{ date - index}}">{{date - index}}</option>
+                            </select>
+
+                            <small class="error-message"
+                            *ngIf="(!signupForm.controls['day'].valid  && signupForm.controls['day'].touched) || 
+                            (!signupForm.controls['month'].valid  && signupForm.controls['month'].touched) || (!signupForm.controls['year'].valid  && signupForm.controls['year'].touched)"
+                            >
+                                Select a date
+                            </small> 
+                            <!-- <input [class.invalid]="!signupForm.controls['dob'].valid && signupForm.controls['dob'].touched" class="form-control" max="{{date - 18}}-12-31" formControlName="dob" type="date" placeholder="Select Date of Birth">
+                            <small class="error-message" *ngIf="!signupForm.controls['surname'].valid  && signupForm.controls['surname'].touched">
+                                Enter a valid date of birth
+                            </small> -->
+
+                            <label>Password</label>
+                            <input [class.invalid]="!signupForm.controls['password'].valid && signupForm.controls['password'].touched" class="form-control" formControlName="password" type="password" placeholder="Enter Password">
+                            <small class="error-message" *ngIf="!signupForm.controls['password'].valid  && signupForm.controls['password'].touched">
+                                Password must be at least 6 characters
+                            </small>
+
+                            <label>Confirm Password</label>
+                            <input [class.invalid]="!signupForm.controls['conPassword'].valid && signupForm.controls['conPassword'].touched" class="form-control" formControlName="conPassword" type="password" placeholder="Confirm Password">
+                            <small class="error-message" *ngIf="signupForm.controls['password'].value != signupForm.controls['conPassword'].value && signupForm.controls['conPassword'].touched">
+                                Must match Password Field.
+                            </small>
+                          </div>
+
+                          <div class="form-group button-block text-center">
+                              <p class="success-message" *ngIf="success">{{success}}</p>
+                              <p class="error-message" *ngIf="error">{{error}}</p>
+                            <button (click)="signupUser(signupForm)" [disabled]="signupForm.invalid || signupForm.controls['password'].value !== signupForm.controls['conPassword'].value" class="form-btn">
+                                <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+                                Sign Up</button>
+                                <small class="error-message" *ngIf="error">{{error}}</small>
+                            <p class="sign-up-text">Already have an account?<a routerLink="/signin">Sign in</a></p>
+                          </div>
+                          
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section> 
+  </div>
+  
+  

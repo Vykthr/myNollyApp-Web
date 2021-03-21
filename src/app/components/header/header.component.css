@@ -1,0 +1,43 @@
+.navbar-collapse {
+    flex-basis: auto !important;
+}
+a.logo {
+    margin-left: 1rem;
+}
+.header-wrapper .nav-menu {
+    margin-left: 1rem;
+}
+.header-wrapper {
+    margin-top: 1rem;
+}
+@media only screen and (max-width: 992px){
+.header-wrapper .nav-menu li {
+    width: 90% !important;
+}
+}
+@media only screen and ( max-width: 992px) {
+    #navbarNavDropdown{
+        display: none !important;
+    }
+}
+.user-avater > i {
+    color: #fff;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.user-menu {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+}
+.user-menu a {
+    color: #fff;
+}
+.header-wrapper .user-menu:before {
+    background-color: transparent;
+}
+.header-wrapper .user-menu:after {
+    right: 10px;
+}

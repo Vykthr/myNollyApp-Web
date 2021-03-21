@@ -1,0 +1,17 @@
+@media(max-width: 600px) {
+    .footer-wrapper .icon-img {
+        height: 80px !important;
+        margin: 0 5px !important;
+    }
+}
+.footer-wrapper .icon-img {
+    height: 100px;
+    margin: 0 10px;
+}
+.footer-wrapper ul li a {
+    font-size: 14px !important;
+}
+
+.footer-wrapper h5 {
+    font-size: 16px !important;
+}

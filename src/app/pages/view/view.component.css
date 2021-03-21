@@ -1,0 +1,43 @@
+.info {
+    font-weight: normal;
+    font-size: 16px;
+    display: block;
+}
+h4 {
+    font-size: 20px;
+    line-height: 1.4;
+    margin: 1rem auto 0;
+}
+
+.play {
+    display: block;
+    margin: auto;
+}
+
+h2 {
+    font-size: 35px;
+    line-height: 1.4;
+}
+
+.small {
+    display: none;
+}
+
+@media(max-width: 578px) {
+    .small {
+        background-color: #e53637;
+        margin: 1rem auto;
+        width: calc(100% - 100px);
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .small a {
+        color: #fff;
+    }
+    .small img {
+        height: 1.1rem;
+        margin-right: .5rem;
+    }
+}

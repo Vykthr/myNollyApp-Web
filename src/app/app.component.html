@@ -1,0 +1,20 @@
+<mat-drawer-container [hasBackdrop]="true" style="background: transparent !important">
+    <mat-drawer #drawer position="end" class="sidenav" mode="over">
+        <div id="navbarNavDropdown">
+            <ul class="navbar-nav nav-menu float-none text-center">
+                <li class="nav-item"><a class="nav-link" (click)="drawer.toggle()" routerLink="/" routerLinkActive="active">Home</a></li>
+                <li class="nav-item"><a class="nav-link" (click)="drawer.toggle()" routerLink="/categories" routerLinkActive="active">Categories</a></li>
+                <li class="nav-item"><a class="nav-link" (click)="drawer.toggle()" routerLink="/contact" routerLinkActive="active">Contact</a></li>
+                <li *ngIf="!auth.authenticated.value" class="nav-item"><a class="nav-link" (click)="drawer.toggle()" routerLink="/signin" routerLinkActive="active">Sign In</a></li>
+                <li *ngIf="auth.authenticated.value" class="nav-item"><a class="nav-link" (click)="drawer.toggle()" routerLink="/account" routerLinkActive="active">Account</a></li>
+                <li *ngIf="auth.authenticated.value" class="nav-item"><a class="nav-link" (click)="general.signOut(); drawer.toggle()">Sign Out</a></li>
+            </ul>
+        </div>
+    </mat-drawer>
+<app-header [drawer]="drawer"></app-header>
+
+<router-outlet (activate)="onActivate($event)"></router-outlet>
+
+<app-footer></app-footer>
+
+</mat-drawer-container>

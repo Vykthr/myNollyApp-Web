@@ -1,0 +1,50 @@
+<owl-carousel-o [options]="customOptions" *ngIf="!secondFrame">
+    <ng-template carouselSlide *ngFor="let movie of movieList">
+        <!-- <div class="banner-slider owl-theme" id="banner"> -->
+            <div class="owl-items main" (click)="general.viewMovie(movie)" style="cursor: pointer;">
+                <a class="slide-one">
+                    <div class="slide-image"><img src="{{movie.details.img}}" alt="image"></div>
+                    <span class="tag rating">{{getRate(movie.details.votes, movie.details.views)}}</span>
+                    <div class="slide-content" id="textDiv">
+                        <h2 style="overflow: hidden;" id="text">
+                            {{movie.details.title}}
+                        </h2>
+                        <p class="tag"id="rating" [innerHTML]="getRating(getRate(movie.details.votes, movie.details.views))"> 
+                        </p>
+                        <span class="tag">{{movie.details.year}}</span>
+                        <span class="tag"><b>HD </b></span>
+                        <span class="tag">{{movie.details.from | titlecase }}</span>
+                    </div>
+                </a>
+            </div>
+        <!-- </div> -->
+    </ng-template>
+</owl-carousel-o>
+
+
+<owl-carousel-o [options]="customOptions" *ngIf="secondFrame">
+    <ng-template carouselSlide *ngFor="let movie of movieList">
+        <!-- <div class="banner-slider owl-theme" id="banner"> -->
+            <div class="owl-items">
+                <a class="slide-one slide-two"  (click)="general.viewMovie(movie)" style="cursor: pointer;">
+                    <div class="slide-image" style="background-image: url({{movie.details.img}});"></div>
+                    <div class="slide-content">
+                        <h2>{{movie.details.title}}</h2>
+                        <span class="tag rating">{{getRate(movie.details.votes, movie.details.views)}}</span>
+                        <span class="tag">{{movie.details.year}}</span>
+                        <span class="tag"><b>HD</b></span>
+                        <span class="tag"><b>{{movie.details.from | titlecase}}</b></span>
+                    </div>
+                </a>
+            </div>
+        <!-- </div> -->
+    </ng-template>
+</owl-carousel-o>
+
+<owl-carousel-o [options]="customOptions" *ngIf="language">
+    <ng-template carouselSlide *ngFor="let language of general.languages; let index = index">
+            <div class="owl-items">
+                <a routerLink="/categories/languages/{{language}}" class="category-wrap" style="background-image: url(assets/images/gb{{index+1}}.png);"><span>{{language | uppercase}}</span></a>
+            </div>
+    </ng-template>
+</owl-carousel-o>

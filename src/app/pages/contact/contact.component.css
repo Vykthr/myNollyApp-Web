@@ -1,0 +1,33 @@
+h2 {
+    font-size: 30px;
+}
+input.form-control {
+    height: 45px;
+    border-radius: 5px;
+}
+textarea {
+    min-height: 90px;
+    padding-top: 10px;
+    border-radius: 5px;
+}
+.form-control {
+    padding-left: 20px;
+}
+
+@media(max-width: 769px) {
+.social {
+    padding: 40px 20px;
+}
+}
+@media(max-width: 576px) {
+    .social {
+        padding: 40px;
+        margin-top: 3.5rem;
+    }
+}
+.social .btn {
+    margin: 1rem 5px;
+    width: 45%;
+    padding: 10px;
+    color: #fff;
+}

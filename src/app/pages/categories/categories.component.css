@@ -1,0 +1,36 @@
+form input, form select, form button{
+    width: auto;
+    margin: 1rem .5rem 0;
+    height: 45px;
+    padding: 10px;
+    border-radius: 5px;
+}
+button:focus, button:active{
+    outline: none;
+}
+button {
+    background: #e53637;
+    color: #fff;
+}
+button:hover{
+    color: #fff;
+}
+form .form-group{
+    display: flex;
+}
+a{
+    text-decoration: none !important;
+}
+.tag {
+    /* font-weight: normal ; */
+    color: #fff;
+}
+.info{
+    text-align: center;
+    margin: 1.3rem auto 1rem;
+    font-size: 30px;
+}
+.infoText {
+    text-align: center;
+    color: #fff;
+}

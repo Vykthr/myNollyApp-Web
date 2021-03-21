@@ -1,0 +1,14 @@
+.accordion .card button i {
+    color: #fff;
+}
+button.log:after {
+    display: none;
+}
+button:focus, button:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.form-control {
+    color: #000 !important;
+    font-weight: normal;
+}

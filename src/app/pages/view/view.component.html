@@ -1,0 +1,75 @@
+<div id="loader" class="preloader"></div>
+
+<div class="backdrop"></div>
+
+<div class="main-wrapper">
+    <!-- banenr wrapper -->
+    <div class="banner-wrapper" *ngIf="viewing">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12" id="details">
+                    <div class="banner-wrap justify-content-between align-items-center">
+                        <div class="left-wrap">
+                            <span class="rnd">{{this.viewing.details.from | titlecase }}</span>
+                            <h2>{{this.viewing.details.title}}</h2>
+                            <span class="tag blk">{{ this.viewing.details.genre.join(', ') | titlecase }}</span>
+                            <span class="tag" style="margin-right: .5rem"><b>HD</b></span> <span class="tag">{{this.viewing.details.year}}</span>
+                            <p>{{viewing.details.description.substring(0,150)}} <span>{{viewing.details.description.length > 150 ? '...' : ''}}</span></p>
+                            <span class="tag blk" style="margin-top: .5rem"><a href="{{viewing.details.link}}" target="_blank" class="btn btn-lg"><img src="assets/images/play.png" alt="icn">Watch now</a></span>
+            
+                        </div>
+                        <div class="right-wrap" style="background-image: url({{this.viewing.details.img}});"></div>
+                    </div>        
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banenr wrapper -->
+
+    <!-- crew wrapper -->
+    <div class="slide-wrapper" *ngIf="viewing">
+        <div class="container">
+            <div class="row" id="rowDet">
+                <div class="col-12 mt-4">
+                    <h2 style="text-align: center; text-transform: uppercase; font-weight: 700; margin-bottom: 1rem; line-height: 1.1;">{{this.viewing.details.title}}</h2>
+                </div>
+                
+                <span class="small"><a href="{{viewing.details.link}}" target="_blank" class="btn btn-lg"><img src="assets/images/play.png" alt="icn">Watch now</a></span>
+            
+                <div class="col-sm-6">
+                    <h4><span>Synopsis:</span> <br><span class="info">{{this.viewing.details.description}}</span></h4>
+                    <h4><span>Genre:</span> <span class="info">{{ this.viewing.details.genre.join(', ') | titlecase }}</span></h4>
+                </div>
+                <div class="col-sm-6 mb-4" style="margin-bottom: 2rem">
+                    <h4><span>Cast:</span> <span class="info">{{ this.viewing.details.cast.join(', ') }}</span></h4>
+                    <h4><span>Producers:</span> <span class="info">{{ this.viewing.details.producers.join(', ') }}</span></h4>
+                    <h4><span>Year:</span> <span class="info">{{this.viewing.details.year}}</span></h4>
+                </div>
+
+                <youtube-player [width]='innerWidth > 1000 ? innerWidth - 200 : innerWidth - 100' class="play" videoId="{{this.viewing.details.trailer}}"></youtube-player>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- slider wrapper -->
+    <div class="slide-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 text-left mb-4 mt-6" style="margin-top: 2rem;">
+                    <h2>Similar Movies</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <app-min-slider [movieList]="general.movieList.value"></app-min-slider>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- slider wrapper -->
+
+
+</div>
+

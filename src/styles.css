@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@media (min-width: 1200px) {
+    .container, .container-sm, .container-md, .container-lg, .container-xl  {
+        min-width: 1399px !important;
+    }
+}
+.owl-nav {
+    right: 0 !important;
+}
+.owl-next, .owl-prev {
+    background-color: transparent !important;
+}
+.navbar-toggler-icon {
+    width: 27px !important;
+    height: 2px !important;
+    background-color: #999 !important;
+}
+.main-wrapper {
+    padding: 10px !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.header-wrapper .search-div:after {
+    top: 10px !important;
+}
+#rating > .fa.full, #rating > .fa.half {
+    color: orange !important;
+}
+#rating > .fa{
+    font-size: 15px;
+    margin: 0 .1rem;
+}
+.rnd, .tag.blk {
+    margin-bottom: 1rem;
+}
+
+.slide-wrapper .slide-two .slide-image:before {
+    background-image: url(./assets/images/play.png) !important;
+}
