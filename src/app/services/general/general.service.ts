@@ -91,52 +91,35 @@ export class GeneralService {
   }
 
   async init() {
-    await this.fetchMovies()
+    await this.fetchMovies().then(async (res) => {
+      setTimeout(async () => {
+        this.setValue(res)
+        setTimeout(() => {
+          this.categorizeMovies()
+        }, 1000)
+      }, 500)
+    })
     this.autoLogin();
-    setTimeout(() => {
-      this.sortArr(this.movieList.value)
-    },  500)
-    setTimeout(() => {
-      this.categorizeMovies()
-    },  1000)
   }
 
   async fetchMovies(): Promise<any> {
     return await new Promise(async (resolve, reject) => {
-      await this.db.collection("movies").get().then(async (querySnapshot: any[]) => {
-        let movies: any = []
-        querySnapshot.forEach(async (snap, index) => {
-          await this.db.collection('movies').doc(snap.id).onSnapshot(async (details: { id: any; data: () => any; }) => {
-            await movies.push({
-              id: details.id,
-              details: details.data()
-            });
-          });
+      await this.db.collection("movies").orderBy("added", 'desc').get().then(async (querySnapshot: any) => {
+        let movies: any = await querySnapshot.docs
+          .map((snap: any) => {
+          return {
+            id: snap.id,
+            details: snap.data()
+          };
         })
-        this.setValue(movies)
-        resolve(this.movieList)
+        console.log(movies)
+        resolve(movies)
+      }).catch((err: any) => {
+        console.log(err)
       })
     })
   }
 
-  sortArr(array: any): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      await array.sort((a: any, b: any) => {
-        let nameA = a.details.added.toUpperCase(); // ignore upper and lowercase
-        let nameB = b.details.added.toUpperCase(); // ignore upper and lowercase
-        if (nameA < nameB) {
-          return 1;
-        }
-        if (nameA > nameB) {
-          return -1;
-        }
-        // names must be equal
-        return 0;
-      });
-      resolve(array);
-    });
-  }
-  
   getRate(votes: any, views: any) {
     let rating = (votes/views) * 5;
     if (rating >= 5 ) {
@@ -159,9 +142,8 @@ export class GeneralService {
       this.popular(this.movieList.value);
   }
 
-  popular(arr: any) {
-    let pop = arr;
-    pop.sort((a: any, b: any) => {
+  async popular(arr: any) {
+    const pop = arr.slice().sort((a: any, b: any) => {
       let nameA = a.details.views;
       let nameB = b.details.views;
       if (nameA < nameB) {
@@ -192,11 +174,11 @@ export class GeneralService {
     }, 16);
   }
 
-  signup(email: string, password: string, fname: string, surname: string, phone: string, dob: any): Promise<any> {
+  signup(email: string, password: string, fname: string, surname: string, phone: string, dob: any, country: string): Promise<any> {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((newUserCredential: firebase.auth.UserCredential) => {
         firebase.firestore().doc(`/users/${newUserCredential?.user?.uid}`).set(
-          {firstName: fname, surname, phone, email, dob, views: [], votes: []}).then(() => {
+          {firstName: fname, surname, phone, email, dob, views: [], votes: [], country}).then(() => {
             firebase.auth()?.currentUser?.sendEmailVerification();
           })
       .catch(error => {

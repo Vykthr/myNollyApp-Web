@@ -27,6 +27,7 @@ export class SignupComponent implements OnInit {
       day: ['', Validators.compose([Validators.required])],
       month: ['', Validators.compose([Validators.required])],
       year: ['', Validators.compose([Validators.required])],
+      country: ['', Validators.compose([Validators.required])],
       email: ['', Validators.compose([Validators.required, Validators.email])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
       conPassword: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
@@ -48,7 +49,7 @@ export class SignupComponent implements OnInit {
     let dob = year + '-' + month + '-' + day 
     try {
       await this.general.signup(signupForm.value.email, signupForm.value.password,
-        signupForm.value.firstName, signupForm.value.surname, signupForm.value.phone, dob);
+        signupForm.value.firstName, signupForm.value.surname, signupForm.value.phone, dob, signupForm.value.country);
         this.success = 'Account has been created successfully. You can Sign in now'
     }
     catch (err) {

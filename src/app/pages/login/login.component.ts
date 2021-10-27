@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth.getValue().subscribe((res) => {
-      if(res) this.router.navigateByUrl('/account')
+      if(res) this.router.navigateByUrl('/home')
     })
     Storage.get({key: TOKEN_KEY}).then(async (res: any) => {
       if(res.value){
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
           setTimeout(() => {
             this.general.getUserProfile().then(async (data) => {
               this.auth.setValue(true);
-              if (data.isAdmin) {
+              if (data.isAdmin == true ) {
                 window.location.href = 'https://admin.myNollyApp.com';
               } else {              
                 if(checked){
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
                   };
                   Storage.set({key: TOKEN_KEY, value: JSON.stringify(obj)});
                 }
-                this.router.navigateByUrl('account');
+                this.router.navigateByUrl('home');
               };
             })
           }, 500);

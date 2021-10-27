@@ -12,15 +12,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard]  },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard]   },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
   { path: 'signin', component: LoginComponent },
-  { path: 'movie/:id', component: ViewComponent },
-  { path: 'categories', component: CategoriesComponent },
-  { path: 'categories/:id', component: CategoriesComponent },
-  { path: 'categories/:id/:id', component: CategoriesComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'movie/:id', component: ViewComponent, canActivate: [AuthGuard]  },
+  { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard]  },
+  { path: 'categories/:id', component: CategoriesComponent, canActivate: [AuthGuard]  },
+  { path: 'categories/:id/:id', component: CategoriesComponent, canActivate: [AuthGuard]  },
+  { path: 'contact', component: ContactComponent, canActivate: [AuthGuard]  },
   { path: 'signup', component: SignupComponent },
   // { path: 'admin', component: AdminComponent },
   { path: 'page-404', component: Page404Component },

@@ -1,3 +1,4 @@
+import { AuthGuard } from './../../services/auth/auth.guard';
 import { GeneralService } from './../../services/general/general.service';
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -9,8 +10,6 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class HomeComponent implements OnInit {
   list: any;
-  constructor(public general: GeneralService, private elRef:ElementRef) { 
-  }
   customOptions: OwlOptions = {
     loop: true,
     margin: 10,
@@ -24,7 +23,10 @@ export class HomeComponent implements OnInit {
     },
     nav: true
   }
+  constructor(public general: GeneralService, private elRef:ElementRef, public auth: AuthGuard) { 
 
+  }
+  
   ngOnInit(): void {
     this.general.getValue().subscribe(res => {
       this.list = res;
